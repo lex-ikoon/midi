@@ -1,0 +1,21 @@
+
+float getmusic(string trackname, interpolation; float level, time)
+{
+    // geo
+    string geo = "op:/obj/music/" + trackname + "/arrays/___out";
+    
+    // array
+    string var = "array_" + interpolation;
+    float i[] = detail(geo, var);
+    
+    // total_frames
+    int total_frames = detail(geo, "total_frames");
+
+    // index
+    
+    int index;
+    index = floor(time) + total_frames * floor(level);
+    
+    float result = i[index];
+    return result;
+}
